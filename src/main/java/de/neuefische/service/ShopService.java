@@ -21,9 +21,9 @@ public class ShopService {
         return productRepo.get(id);
     }
 
-    /*public List<Product> listProducts(){
+    public List<Product> listProducts(){
         return productRepo.list();
-    }*/
+    }
 
     public void addOrder(Order order){
         orderRepo.add(order);
