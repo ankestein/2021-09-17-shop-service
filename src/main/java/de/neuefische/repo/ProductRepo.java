@@ -6,7 +6,9 @@ import java.util.*;
 
 public class ProductRepo {
 
-    private static Map<Integer, Product> products;
+    private static Map<Integer, Product> products = new HashMap<>();
+
+
 
         static {
             Product product1 = new Product(1,"Toilet Paper");
