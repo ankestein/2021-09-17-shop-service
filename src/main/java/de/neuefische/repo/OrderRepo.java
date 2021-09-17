@@ -10,20 +10,38 @@ import java.util.Map;
 public class OrderRepo {
     private Map<Integer, Order> orders = new HashMap<>();
 
+
+    public OrderRepo(List<Order> orders) {
+        add(orders);
+    }
+
+    public OrderRepo(){
+    }
+
     public List<Order> list(){
         return new ArrayList<>(orders.values());
     }
 
     public Order get(int id) {
-        for (Order order : orders){
-            if(order.getId() == id) {
+        for (Order order : orders.values()){
+            if (order.getId() == id) {
                 return order;
             }
         }
+        return null;
     }
 
     public void add(Order order){
+        if (this.orders.containsKey(order.getId())) {
+            throw new RuntimeException("Cannot place order; order with id " + order.getId() + " already exists.");
+        }
         orders.put(order.getId(), order);
+    }
+
+    public void add(List<Order> orders) {
+        for (Order order : orders) {
+            add(order);
+        }
     }
 
 }
