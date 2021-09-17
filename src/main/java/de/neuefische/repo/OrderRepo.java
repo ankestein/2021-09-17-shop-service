@@ -11,7 +11,7 @@ public class OrderRepo {
     private Map<Integer, Order> orders = new HashMap<>();
 
     public List<Order> list(){
-        return orders.values();
+        return new ArrayList<>(orders.values());
     }
 
     public Order get(int id) {
