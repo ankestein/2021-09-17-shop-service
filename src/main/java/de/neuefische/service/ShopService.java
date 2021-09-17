@@ -5,38 +5,35 @@ import de.neuefische.model.Product;
 import de.neuefische.repo.OrderRepo;
 import de.neuefische.repo.ProductRepo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ShopService {
 
-    private Map<Integer, Product> productRepo = new HashMap<>();
-    private Map<Integer, Order> orderRepo = new HashMap<>();
+    private ProductRepo productRepo = new ProductRepo();
+    private OrderRepo orderRepo = new OrderRepo();
 
-    public ShopService(Map<Integer, Product> productRepo, Map<Integer, Order> orderRepo) {
+    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
         this.productRepo = productRepo;
         this.orderRepo = orderRepo;
     }
 
-    public Product getProduct(int id){
+    public Optional<Product> getProduct(int id){
         return productRepo.get(id);
     }
 
-    public List<Product> listProducts(){
-        return new ArrayList<>(productRepo.values());
-    }
+    /*public List<Product> listProducts(){
+        return productRepo.list();
+    }*/
 
-    public void addOrder(int id, Order value){
-        orderRepo.put(id, value);
+    public void addOrder(Order order){
+        orderRepo.add(order);
     }
 
     public Order getOrder(int id){
-        return orderRepo.get(id);
+        return null;
     }
 
     public List<Order> listOrders(){
-        return new ArrayList<>(orderRepo.values());
+        return null;
     }
 }
