@@ -18,23 +18,9 @@ public class OrderRepo {
         return Order.getId(id);
     }
 
-    public void add(Order newOrder){
-        orders.put(newOrder.getId(), newOrder);
+    public void add(Order order){
+        orders.put(order.getId(), order);
     }
-
-    public void add(List<Order> )
-
-    public void add(Student student) {
-        students.put(student.getId(), student);
-    }
-
-    public void add(List<Student> students) {
-        for (Student student : students) {
-            add(student);
-        }
-    }
-
-
 
 }
 

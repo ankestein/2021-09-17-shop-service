@@ -16,11 +16,19 @@ public class Order {
                 return id;
         }
 
+        public void setId(){
+            this.id = id;
+        }
+
        public List<Product> getProducts(){
                 return products;
        }
 
-        @Override
+        public void setProducts(List<Product> products) {
+            this.products = products;
+        }
+
+    @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
                 if (o == null || getClass() != o.getClass()) return false;
