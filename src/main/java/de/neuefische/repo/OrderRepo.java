@@ -23,12 +23,7 @@ public class OrderRepo {
     }
 
     public Order get(int id) {
-        for (Order order : orders.values()){
-            if (order.getId() == id) {
-                return order;
-            }
-        }
-        return null;
+        return orders.get(id);
     }
 
     public void add(Order order){
