@@ -15,7 +15,11 @@ public class OrderRepo {
     }
 
     public Order get(int id) {
-        return Order.getId(id);
+        for (Order order : orders){
+            if(order.getId() == id) {
+                return order;
+            }
+        }
     }
 
     public void add(Order order){
