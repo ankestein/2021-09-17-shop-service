@@ -14,8 +14,8 @@ class OrderRepoTest {
     @Test
     public void testListOrders(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
         // when
         List<Order> actual = orderRepo.list();
@@ -38,8 +38,8 @@ class OrderRepoTest {
     @Test
     public void testGetOrder(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
         // when
         Order actual = orderRepo.get(2);
@@ -51,8 +51,8 @@ class OrderRepoTest {
     @Test
     public void testGetNonExistingOrder(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
         // when
         Order actual = orderRepo.get(3);
@@ -64,10 +64,10 @@ class OrderRepoTest {
     @Test
     public void testAddOrder(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
-        Order order3 = new Order(3, new Product(333, "computer"));
+        Order order3 = new Order(3, new ArrayList<Product>(List.of(new Product(333, "computer"))));
         // when
         orderRepo.add(order3);
         List<Order> actual = orderRepo.list();
@@ -79,7 +79,7 @@ class OrderRepoTest {
     @Test
     public void testAddFirstOrder(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
         OrderRepo orderRepo = new OrderRepo();
         // when
         orderRepo.add(order1);
@@ -92,12 +92,12 @@ class OrderRepoTest {
     @Test
     public void testAddOrderWithSameIdException() {
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product (111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
         // when
         try {
-            orderRepo.add(new Order(2, new Product(222, "stapler")));
+            orderRepo.add(new Order(2, new ArrayList<Product>(List.of(new Product(222, "stapler")))));
             fail("Exception not thrown!");
         } catch (RuntimeException e) {
             String actual = e.getMessage();
@@ -109,11 +109,11 @@ class OrderRepoTest {
     @Test
     public void testAddOrderList(){
         // given
-        Order order1 = new Order(1, new Product(111, "bookA"));
-        Order order2 = new Order(2, new Product(222, "pencil"));
+        Order order1 = new Order(1, new ArrayList<Product>(List.of(new Product(111, "bookA"), new Product(21, "bookB"))));
+        Order order2 = new Order(2, new ArrayList<Product>(List.of(new Product(222, "pencil"))));
         OrderRepo orderRepo = new OrderRepo(List.of(order1, order2));
-        Order order3 = new Order(3, new Product(333, "computer"));
-        Order order4 = new Order(4, new Product(115, "keyboard"));
+        Order order3 = new Order(3, new ArrayList<Product>(List.of(new Product(333, "computer"))));
+        Order order4 = new Order(4, new ArrayList<Product>(List.of(new Product(111, "bookA"), new Product(115, "keyboard"))));
         List<Order> newOrders = new ArrayList<>(List.of(order3, order4));
         // when
         orderRepo.add(newOrders);
