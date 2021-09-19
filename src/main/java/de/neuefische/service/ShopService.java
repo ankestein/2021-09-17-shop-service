@@ -5,8 +5,7 @@ import de.neuefische.model.Product;
 import de.neuefische.repo.OrderRepo;
 import de.neuefische.repo.ProductRepo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ShopService {
 
@@ -34,18 +33,17 @@ public class ShopService {
         }
     }
     public void listProduct(){
-
     }
 
-    public void addOrder(){
-
+    public void addOrder(Order order){
+        orderRepo.add(order);
     }
 
-    public void getOrder(){
-
+    public Order getOrder(int id){
+        return null;
     }
 
-    public void listOrders(){
-
+    public List<Order> listOrders(){
+        return null;
     }
 }
