@@ -9,20 +9,30 @@ import java.util.*;
 
 public class ShopService {
 
-    private ProductRepo productRepo = new ProductRepo();
-    private OrderRepo orderRepo = new OrderRepo();
+   // private Map<Integer, Product> productRepo = new HashMap<>();
+   public static ProductRepo productRepo;
 
-    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
-        this.productRepo = productRepo;
+    private Map<Integer, Order> orderRepo = new HashMap<>();
+
+    public ShopService(Map<Integer, Product> productRepo, Map<Integer, Order> orderRepo) {
+        //this.productRepo = productRepo;
         this.orderRepo = orderRepo;
     }
 
-    public Optional<Product> getProduct(int id){
-        return productRepo.get(id);
+    public ShopService(ProductRepo productRepo) {
+        this.productRepo = productRepo;
     }
 
-    public List<Product> listProducts(){
-        return productRepo.list();
+    public ShopService(){};
+
+    public Product getProduct(int id) {
+        if (productRepo.get(id).isPresent()) {
+            return productRepo.get(id).get();
+        } else {
+            return new Product(0, "not found");
+        }
+    }
+    public void listProduct(){
     }
 
     public void addOrder(Order order){
