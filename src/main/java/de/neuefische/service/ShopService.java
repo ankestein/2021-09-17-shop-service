@@ -10,13 +10,21 @@ import java.util.Map;
 
 public class ShopService {
 
-    private Map<Integer, Product> productRepo = new HashMap<>();
+   // private Map<Integer, Product> productRepo = new HashMap<>();
+   public static ProductRepo productRepo;
+
     private Map<Integer, Order> orderRepo = new HashMap<>();
 
     public ShopService(Map<Integer, Product> productRepo, Map<Integer, Order> orderRepo) {
-        this.productRepo = productRepo;
+        //this.productRepo = productRepo;
         this.orderRepo = orderRepo;
     }
+
+    public ShopService(ProductRepo productRepo) {
+        this.productRepo = productRepo;
+    }
+
+    public ShopService(){};
 
     public String getProduct(){
         return null;

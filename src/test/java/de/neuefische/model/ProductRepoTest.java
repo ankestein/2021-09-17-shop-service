@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -25,21 +27,19 @@ public class ProductRepoTest {
 
     @ParameterizedTest
     @CsvSource({
-            "1, Toilet Paper",
-            "2, Toothbrush",
-            "3, Detergent",
-            "4, No matching product found."
+            "1, T-Shirt",
+            "2, Jacket",
+            "4, not found"
     })
     public void runTestForGetProduct(int id, String expected){
         //WHEN
-        String actual;
-        ProductRepo productRepo = new ProductRepo();
-        Optional<Product> optionalProduct = productRepo.get(id);
-        if (optionalProduct.isPresent()) {
-            actual = optionalProduct.get().getProductName();
-        } else {
-            actual = "No matching product found.";
-        }
+        Product product1 = new Product(1, "T-Shirt");
+        Product product2 = new Product(2, "Jacket");
+        List<Product> products = new ArrayList<>();
+        products.add(product1);
+        products.add(product2);
+        ShopService shopService = new ShopService(new ProductRepo(products));
+        String actual = shopService.getProduct(id).getProductName();
         //THEN
         Assertions.assertEquals(expected, actual);
     }
