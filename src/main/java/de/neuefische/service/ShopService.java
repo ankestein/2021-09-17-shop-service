@@ -26,10 +26,13 @@ public class ShopService {
 
     public ShopService(){};
 
-    public String getProduct(){
-        return null;
+    public Product getProduct(int id) {
+        if (productRepo.get(id).isPresent()) {
+            return productRepo.get(id).get();
+        } else {
+            return new Product(0, "not found");
+        }
     }
-
     public void listProduct(){
 
     }

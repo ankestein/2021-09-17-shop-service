@@ -1,6 +1,7 @@
 package de.neuefische.model;
 
 import de.neuefische.repo.ProductRepo;
+import de.neuefische.service.ShopService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
